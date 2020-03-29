@@ -56,41 +56,6 @@ router.get('/:id', async (req,res) => {
            
 })
 
-// router.post('', (req,res) => {
-//     const result = validateNotice(req.body);
-//     if(result.error){
-//         // 400 Bad Request
-//         res.status(400).send(result.error.details[0].message);
-//         return;
-//     }
-//     const notice = {
-//         id: notices.length + 1,
-//         name: req.body.name,
-//     }
-//     console.log(notice)
-//     notices.push(notice);
-//     res.send(notice);
-// });
-
-//Add new notice
-///to jest niewazne juz bo bez logowania nie mozna dodac
-
-// router.post('/new', (req,res) => {
-//     const notice = new Notice({
-//         title: req.body.title,
-//         categories: req.body.categories,
-//         description: req.body.description,
-//         price: req.body.price
-//     });
-
-//     notice.save()
-//     .then(data => {
-//         res.json(data)
-//     })
-//     .catch(err => {
-//         res.json({message: err})
-//     })
-// });
 
 //add notice by logged user
 
@@ -129,31 +94,6 @@ router.post('', upload.array('imgs'), verify, (req,res) => {
     })
 });
 
-//add notice to user
-/// to jest tez niewazne, bo tokenem pobieram id
-// router.post('/:userId', (req,res) => {
-//     const notice = new Notice({
-//         title: req.body.title,
-//         categories: req.body.categories,
-//         description: req.body.description,
-//         price: req.body.price,
-//         userId: req.params.userId
-//     });
-//     console.log(notice)
-//     notice.save()
-//     .then(new_notice => {
-//         return User.findOneAndUpdate({_id: req.params.userId}, {$push: {notices: new_notice._id}}, {new: true});
-//         console.log(data._id)
-//         console.log(req.params.id)
-//     })
-//     .then(user => {
-//         res.json(user)
-//     })
-//     .catch(err => {
-//         res.json({message: err})
-//     })
-// });
-
 //Update notice
 
 router.put('/:id',
@@ -175,12 +115,6 @@ router.put('/:id',
         }
         const updatedNotice = await Notice.updateOne({_id: req.params.id}, 
             { $set: item,
-                // {description: req.body.description},
-                // {price: req.body.price},
-                // {type: req.body.type},
-                // {location: req.body.location},
-                // {categories: req.body.categories},
-                // {imgs: imgPaths}
             })
         console.log(updatedNotice);
         res.json(updatedNotice);
@@ -203,12 +137,6 @@ router.put('/extendValidity/:id', verify, async (req,res) => {
         }
         const actualNotice = await Notice.updateOne({_id: req.params.id}, 
             { $set: item
-                // {description: req.body.description},
-                // {price: req.body.price},
-                // {type: req.body.type},
-                // {location: req.body.location},
-                // {categories: req.body.categories},
-                // {imgs: imgPaths}
             })
         console.log(actualNotice);
         res.json(actualNotice);
@@ -232,16 +160,5 @@ router.delete("/:id", verify, async (req, res) => {
     }
 }) 
 
-
-
-// function validateNotice(notice){
-//     const schema = {
-//         name: Joi.string().min(3).required()
-//     };
-
-//     const result = Joi.validate(notice, schema)
-//     return result;
-
-// }
 
 module.exports = router;

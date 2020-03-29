@@ -28,22 +28,6 @@ router.get('/logged-user-information', verify, async (req,res) => {
     // user = User.findbyOne({_id: req.user});       
 });
 
-// router.post('', (req,res) => {
-//     const user = new User({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         phoneNumber: req.body.phoneNumber,
-//         login: req.body.login,
-//         password: req.body.password,
-//     });
 
-//     user.save()
-//     .then(data => {
-//         res.json(data)
-//     })
-//     .catch(err => {
-//         res.json({message: err})
-//     })
-// });
 
 module.exports = router;
