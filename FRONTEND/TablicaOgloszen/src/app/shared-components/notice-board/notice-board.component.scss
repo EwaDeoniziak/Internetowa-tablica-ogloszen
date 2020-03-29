@@ -1,0 +1,173 @@
+@import './../../shared/variables.scss';
+
+    
+    .content{
+        margin-top: 70px;
+        @media (max-width: 800px) {
+            margin-top: 50px;
+        }
+        @media (max-width: 660px) {
+            margin-top: 20px;
+        }
+    }
+   .wrapper{
+       display: grid;
+        //background: linear-gradient(to bottom, $dark_sky, $light_sky);
+        background-color: $light_sky;
+        margin: 3%;
+        padding-bottom: 10px;
+        grid-template-areas: 
+        "search location price-from price-to"
+        "radio-buttons radio-buttons radio-buttons radio-buttons";
+        @media (max-width:1125px) {
+            grid-template-areas: 
+            "search location" 
+            "price-from price-to"
+            "radio-buttons radio-buttons";
+        }
+        @media (max-width:600px) {
+            grid-template-areas: 
+            "search" 
+            "location" 
+            "price-from" 
+            "price-to"
+            "radio-buttons" 
+        }
+        .filter-input{
+            margin: 10px;
+            font-size: 13px;
+            @media (max-width:1125px) {
+                font-size: 10px;
+            }
+            @media (max-width:300px) {
+                font-size: 8px;
+                width: 80vw;
+                margin-bottom: 0;
+            }
+        }
+        .search{
+            grid-area: search;
+        }
+        .location{
+            grid-area: location;
+        }
+        .price-from{
+            grid-area: price-from;
+        }
+        .price-to{
+            grid-area: price-to;
+        }
+        .options{
+            display: flex;
+            grid-area: radio-buttons;
+            background-color: white;
+            padding: 2%;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 13px;
+            
+            mat-radio-button{
+                margin-left: 30px;
+                margin-bottom: 10px;
+                @media (max-width:300px) {
+                    margin-left: 10px;
+                }
+            }
+            @media (max-width: 1125px) {
+                font-size: 10px;
+            }
+            @media (max-width:300px) {
+                font-size: 8px;
+                width: 78vw;
+                padding: 1vw;
+            }
+            .options-title{
+                color: $dark_sky;
+                text-transform: uppercase;
+                font-weight: 600;
+                @media (max-width:300px) {
+                    display: none;
+                }
+            }
+        }
+    } 
+    .button-div{
+        margin: 3%;
+        margin-bottom: 20px;
+        @media (min-width:731px) {
+            display: none;
+        }
+    }
+    .pager{
+        margin: 3%;
+    }
+    
+
+
+
+  
+
+  
+    // .card {
+    //     :hover{
+    //         cursor: pointer;
+    //     }
+    //     width: 27%;
+    //     margin-bottom: 80px;
+    //     box-shadow: $outline-shadow;
+    //     @media (max-width: 800px) {
+    //         width: 40%;
+    //     }
+    //     @media (max-width: 600px) {
+    //         width: 100%;
+    //         margin-bottom: 40px;
+    //     }
+    //     p{
+    //         height: 70px;
+    //         padding: 20px;
+    //     }
+    //     .card-header{
+    //         height: 50px;
+    //         padding-bottom: 30px;
+    //         .header-image {
+    //             background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    //             background-size: cover;    
+    //         }
+    //     }
+        
+    //       .photo-container{
+    //         height: 200px;
+    //         text-align: center;
+    //         border: 1px solid $light_sky;
+    //         img{
+    //             max-height: 200px;
+    //             width: auto;
+    //         }
+    //         .no-picture{
+    //             padding-top: 50px;
+    //             color: $dark_sky;
+    //         }
+    //     }
+    //     .details{
+    //         padding: 20px;
+    //         .detail {
+    //             padding-bottom: 10px;
+    //             display: flex;
+    //             .detail-name{
+    //                 text-transform: uppercase;
+    //                 color: $dark_sky;
+    //                 width: 100px;
+    //             }
+    //             .detail-value{
+    //             }
+    //         }
+    //     }
+    //   }
+
+    .checked{
+        background-color: lighten($color: $sea, $amount: 5%);
+        border-radius: 10px;
+    }
+
+
+    

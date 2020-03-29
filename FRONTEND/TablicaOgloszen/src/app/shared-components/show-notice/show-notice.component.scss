@@ -1,0 +1,168 @@
+@import '../../shared/variables.scss';
+main{
+    text-align: center;
+    p{
+        &.date{
+            text-align: left;
+            padding: 20px;
+            @media (max-width: 600px){
+                padding:10px;
+            }
+        }
+    }
+    .text{
+        text-align:left;
+         @media (max-width: 800px){
+            padding: 20px;
+
+        }
+        @media (max-width: 600px){
+            padding:10px;
+        }
+        h2{
+            margin: 30px 0 50px 0;
+            @media (max-width: 600px){
+            margin: 0 0 15px 0;
+        }
+        }
+    }
+    .imgs{
+        //background-color: $light_sky;
+        padding: 40px 0 40px 0;
+        display: grid;
+        grid-template-columns: 80% 20%;
+        margin-top: 40px;
+        .allImgs{
+            .displayed{
+                min-height: 60px;
+                min-width: 60px;
+                position: relative;
+                img {
+                    max-height: 100%;
+                    height: auto;
+                    max-width: 100%;
+                    width: auto;
+                    position: absolute;  
+                    top: 0;  
+                    bottom: 0;  
+                    left: 0;  
+                    right: 0;  
+                    margin: auto;
+                }
+            }
+            .smallImg{
+                height: 50px;
+                width: 50px;
+                margin-bottom: 10px;
+                border: 1px solid $light_sky;
+                position: relative;
+                &:hover {
+                    cursor:pointer;
+                    height: 60px;
+                    width: 60px;
+                }
+                img {
+                    max-height: 100%;
+                    //height: auto;
+                    max-width: 100%;
+                    //width: auto;
+                    position: absolute;  
+                    top: 0;  
+                    bottom: 0;  
+                    left: 0;  
+                    right: 0;  
+                    margin: auto;
+                }
+            }
+            @media (max-width: 750px){
+                display: none;
+            }
+        }
+        @media (max-width: 750px){
+            grid-template-columns: 100%;
+            width:100%;
+            margin-top:0;
+            padding:20px 0 20px 0;
+        }
+        .displayedImg{
+            position: relative;
+            height: 400px;
+            width: 400px;
+            // height: auto;
+            // width: 30vw;
+            border: 1px solid $light_sky;
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            img{
+                max-height: 400px;
+                max-width: 400px;
+                // height: auto;
+                // width: 30vw;
+                position: absolute;  
+                top: 0;  
+                bottom: 0;  
+                left: 0;  
+                right: 0;  
+                margin: auto;
+            }
+            @media (max-width: 500px){
+                width:90vw;
+                height:90vw;
+                position: relative;
+                img{
+                    max-width:100%;
+                    max-height:100%;
+                    position: absolute;  
+                    top: 0;  
+                    bottom: 0;  
+                    left: 0;  
+                    right: 0;  
+                    margin: auto;
+                }
+            }
+            .arrow{
+                position: absolute;
+                top: 0px;
+                z-index: 1;
+                height: 100%;
+                width: 20%;
+                text-align: center;
+                &.arrow_back{
+                    left: 0px;
+                    float: left;
+                }
+                &.arrow_forward{
+                    right: 0px;
+                    float: right;
+                }
+                &:hover{
+                    background-color: rgba(0, 0, 0, 0.171);
+                    transition: all 1s ease;
+                    cursor: pointer;
+                }
+                mat-icon{
+                    margin-top: 190px;
+                    font-size: 40px;
+                    @media (max-width: 500px){
+                        margin-top: 40vw;
+                    }
+                }
+            }
+        }
+    }
+    .not-visible{
+        display:none;
+    }
+    
+    .categories{
+            font-size: 12px;
+            color: $dark_sky;
+            text-align: center;
+            margin: 0 auto;
+        }
+}
+.displayed{
+        height: 60px;
+        width: 60px;
+    }

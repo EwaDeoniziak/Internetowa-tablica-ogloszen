@@ -1,0 +1,50 @@
+@import './../../shared/variables.scss';
+main{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    //clip-path: polygon(0 0, 100% 0, 100% 51%, 65% 26%, 0 68%);
+    //background-color: $lemon;
+    //z-index: -1;
+    .side{
+        width: 34%;
+        box-shadow: $outline-shadow;
+        font-size: 12px;
+        margin: 1% 5% 5% 5%;
+        padding: 3%;
+        @media (max-width: 600px) {
+            width: 90%;
+        }
+        h4{
+            margin-bottom: 30px;
+        }
+        .item{
+            display: flex;
+            padding: 10px;
+            .name{
+                margin-right: 5% ;
+                width: 45%;
+                padding-top: 10px;
+            }
+            .form-input{
+                font-size: 10px;
+                width: 90vw;
+            }
+            
+        }
+        .green-button{
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+    }
+    p{
+        color: darken(red,10%);
+        font-size: 12px;
+        padding: 10px;
+        letter-spacing: 1.2px;
+    }
+    .spinner{
+        padding:20px;
+    }
+}

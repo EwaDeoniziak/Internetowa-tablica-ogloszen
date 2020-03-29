@@ -1,0 +1,104 @@
+<mat-toolbar class="navigation main-page">
+    <!-- <div *ngIf="categoriesVisible" class="icon-div">
+        <a class="icon" (click)="sidenav.toggle()">
+            <mat-icon>dehaze</mat-icon>
+        </a>
+    </div> -->
+    <div class="big-screen" >
+        <a class="logo" routerLink='notice-board/page/1'>Tablica ogłoszeń</a>
+        <div class="button-div">
+            <button class="green-button" mat-button (click)="addNewNotice()">Dodaj ogłoszenie</button>
+        </div>
+        <a class="login" [matMenuTriggerFor]="menu">
+            <mat-icon class="icon login-icon">person</mat-icon>
+            <div class="login-text">
+                Moje konto   
+            </div> 
+            <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
+        </a>
+    </div>
+    <div class="small-screen" >
+        <a class="icon" routerLink='notice-board/page/1'><mat-icon>home</mat-icon></a>
+        <a class="icon" [matMenuTriggerFor]="menu">
+            <mat-icon>person</mat-icon>
+            <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
+        </a>
+    </div>
+    <mat-menu class="account-menu" #menu="matMenu" xPosition="before">
+        <a mat-menu-item routerLink="/../../../../user-panel/add-notice">
+          <mat-icon>library_add</mat-icon>
+          <span>Dodaj ogłoszenie</span>
+        </a>
+        <a mat-menu-item routerLink="/../../../user-panel/my-notices">
+          <mat-icon>my_library_books</mat-icon>
+          <span>Moje ogłoszenia</span>
+        </a>
+        <a mat-menu-item routerLink="/../../../user-panel/my-account">
+            <mat-icon>account_circle</mat-icon>
+            <span>Moje konto</span>
+          </a>
+        <a mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Wyloguj</span>
+        </a>
+      </mat-menu>
+    
+</mat-toolbar>
+
+<!-- <mat-sidenav-container fxFlexFill >
+<mat-sidenav [fixedInViewport]="true" #sidenav fxLayout="column" class="side-nav">
+    <div fxLayout="column">
+            <div class="categories">
+                <h3>Wybierz kategorię</h3>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>home_work</mat-icon></div>
+                    <div class="text">Nieruchomości</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>watch</mat-icon></div>
+                    <div class="text">Moda i uroda</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>weekend</mat-icon></div>
+                    <div class="text">Dom i ogród</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>book</mat-icon></div>
+                    <div class="text">Edukacja</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>sports_soccer</mat-icon></div>
+                    <div class="text">Sport</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>tablet_mac</mat-icon></div>
+                    <div class="text">Elektronika</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>child_friendly</mat-icon></div>
+                    <div class="text">Dziecko</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>directions_car</mat-icon></div>
+                    <div class="text">Motoryzacja</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>pets</mat-icon></div>
+                    <div class="text">Zwierzęta</div>
+                </button>
+                <button class="category" mat-button>
+                    <div class="icon"><mat-icon>select_all</mat-icon></div>
+                    <div class="text">Wszystkie</div>
+                </button>
+        </div>
+    </div>
+</mat-sidenav>
+<mat-sidenav-content fxFlexFill>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</div>

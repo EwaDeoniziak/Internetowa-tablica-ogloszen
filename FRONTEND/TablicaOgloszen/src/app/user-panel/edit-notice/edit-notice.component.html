@@ -1,0 +1,113 @@
+<main>
+    <div class="container">
+        <h1>Edytuj ogłoszenie</h1>
+        <form (ngSubmit)="addNewNotice($event)" [formGroup]="addNoticeForm" #f="ngForm">
+            <div class="property">
+                <mat-form-field class="my-input" appearance="outline">
+                    <mat-label>Tytuł ogłoszenia</mat-label>
+                    <input matInput name="title" formControlName="title" required maxlength="25">
+                    <mat-hint>Maksymalnie 25 znaków</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="property">
+                <span *ngIf="categories; else spinner">
+                    <p>Wybierz kategorię</p>
+                    <mat-radio-group class="categories-to-check" aria-labelledby="example-radio-group-label"
+                       formControlName="categories">
+                        <mat-radio-button class="category-check" *ngFor="let category of categories" [value]="category">
+                            {{getCategoryRightName(category)}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </span>
+                
+                <ng-template #spinner>
+                    <mat-spinner class="spinner" diameter="60"></mat-spinner>
+                </ng-template>
+            </div>
+            <div class="property">
+                <mat-form-field class="my-input" appearance="outline">
+                    <mat-label>Lokalizacja</mat-label>
+                    <input matInput name="location" formControlName="location" required>
+                </mat-form-field>
+            </div>
+            <div class="property">
+                
+                    <p>Typ ogłoszenia</p>
+                    <mat-radio-group class="categories-to-check" aria-labelledby="example-radio-group-label"
+                       formControlName="type">
+                        <mat-radio-button checked class="category-check" [value]="1">
+                            Sprzedam
+                        </mat-radio-button>
+                        <mat-radio-button class="category-check" [value]="2">
+                            Kupię
+                        </mat-radio-button>
+                        <mat-radio-button class="category-check" [value]="3">
+                            Zamienię
+                        </mat-radio-button>
+                    </mat-radio-group>
+                
+            </div>
+            <div class="property">
+                <mat-form-field class="my-input my-textarea" appearance="outline">
+                    <mat-label>Opis ogłoszenia</mat-label>
+                    <textarea matInput class="my-textarea" name="description" formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="property">
+                <mat-form-field class="my-input" appearance="outline">
+                    <mat-label>Cena</mat-label>
+                    <input matInput type="number" name="price" formControlName="price" required>
+                </mat-form-field>
+            </div>
+            <div class="property">
+                <button type="button" mat-stroked-button class="button" (click)="fileUpload.click()">Dodaj nowe
+                    zdjęcia</button>
+                <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple"
+                    accept="image/*" (change)="onFilesSelected($event)" />
+            </div>
+            <!-- <div class="property">
+                <button type="button" mat-stroked-button class="button" (click)="fileUpload.click()">Dodaj zdjęcia</button>
+                <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" (change)="onFilesSelected($event)"/>
+            </div>  -->
+            <!-- <div class="property">
+                <button type="button" mat-stroked-button class="button" (click)="fileUpload1.click()">Dodaj zdjęcia</button>
+                <input hidden type="file" #fileUpload1 name="fileUpload1" accept="image/*" (change)="onFileSelected($event)"/>
+            </div> 
+            <div class="property">
+                <button type="button" mat-stroked-button class="button" (click)="fileUpload2.click()">Dodaj zdjęcia</button>
+                <input hidden type="file" #fileUpload2 name="fileUpload2" accept="image/*" (change)="onFileSelected($event)"/>
+            </div> 
+            <div class="property">
+                <button type="button" mat-stroked-button class="button" (click)="fileUpload3.click()">Dodaj zdjęcia</button>
+                <input hidden type="file" #fileUpload3 name="fileUpload3" accept="image/*" (change)="onFileSelected($event)"/>
+            </div>  -->
+
+            <p>Max 6 zdjęć</p>
+            <ul *ngIf="imgURL.length>0; else no_photos">
+                <li *ngFor="let img of imgURL; let file of addNoticeForm.get('imgs').value">
+                    <div class="name">{{file.name}}</div>
+                    <img [src]="img" height="200" *ngIf="img">
+                </li>
+            </ul>
+            <ng-template #no_photos>
+                <p>Brak wgranych zdjęć</p>
+            </ng-template>
+
+
+
+            <div class="add">
+                <button mat-button class="green-button" type="submit">Edytuj ogłoszenie</button>
+            </div>
+        </form>
+
+        <!-- Tytuł: <input [(ngModel)]="title">
+        Opis: <input [(ngModel)]="description">
+        Cena: <input type="number" [(ngModel)]="price">
+        Zdjęcia: -->
+
+
+
+        <!-- <input type="file" #fileUpload1 id="fileUpload1" name="fileUpload1" multiple="multiple" accept="image/*" (change)="onFileSelected($event)"/>
+        <button (click)="addNotice()">Dodaj ogłoszenie</button> -->
+    </div>
+</main>

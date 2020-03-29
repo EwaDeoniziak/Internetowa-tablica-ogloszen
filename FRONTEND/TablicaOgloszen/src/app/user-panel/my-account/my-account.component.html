@@ -1,0 +1,30 @@
+<main>
+    <div class="container">
+        <h1>Moje konto</h1>
+        <div class="my-data" *ngIf="user; else spinner">
+            <div class="one">
+                <h5>Imię</h5>
+                <div class="value">{{user.firstName}}</div>
+            </div>
+            <div class="one">
+                <h5>Nazwisko</h5>
+                <div class="value">{{user.lastName}}</div>
+            </div>
+            <div class="one">
+                <h5>Numer telefonu</h5>
+                <div class="value">{{user.phoneNumber}}</div>
+            </div>
+            <div class="one">
+                <h5>Adres e-mail</h5>
+                <div class="value">{{user.login}}</div>
+            </div>
+            <div class="button-container">
+                <button mat-stroked-button class="outline-sky-button" (click)="myNoticesNavigate()"> Sprawdź swoje ogłoszenia</button>
+            </div> 
+        </div>
+        <ng-template #spinner>
+            <mat-spinner class="spinner" diameter="100"></mat-spinner>
+        </ng-template>
+        
+    </div>
+</main>

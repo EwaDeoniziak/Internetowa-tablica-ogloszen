@@ -1,0 +1,49 @@
+<mat-toolbar class="navigation main-page">
+        <!-- <div *ngIf="categoriesVisible" class="icon-div">
+            <a class="icon" (click)="sidenav.toggle()">
+                <mat-icon>dehaze</mat-icon>
+            </a>
+        </div> -->
+        <div class="big-screen" >
+            <a class="logo" routerLink='notice-board/page/1'>Tablica ogłoszeń</a>
+            <div class="button-div">
+                <button class="green-button" mat-button (click)="addNewNotice()">Dodaj ogłoszenie</button>
+            </div>
+            <a class="login" (click)="myAccountNavigate()">
+                <mat-icon class="icon login-icon">person</mat-icon>
+                <div class="login-text">Moje konto</div>
+                
+            </a>
+        </div>
+        <div class="small-screen" >
+            <a class="icon" routerLink='notice-board/page/1'><mat-icon>home</mat-icon></a>
+            <a class="icon" (click)="myAccountNavigate()"><mat-icon>person</mat-icon></a>
+        </div>
+        
+</mat-toolbar>
+<!-- <mat-sidenav-container fxFlexFill >
+    <mat-sidenav [fixedInViewport]="true" #sidenav fxLayout="column" class="side-nav">
+        <div fxLayout="column">
+                <div class="categories" *ngIf="categories">
+                    <h3>Wybierz kategorię</h3>
+                    
+                    <div *ngFor="let item of categories" class="category" (click)="changeCategory(item)">
+                        <div class="icon"><mat-icon>{{getCategoryIcon(item)}}</mat-icon></div>
+                        <div class="text">{{getCategoryRightName(item)}}</div>
+                    </div>
+                    <div class="category">
+                        <div class="icon"><mat-icon>select_all</mat-icon></div>
+                        <div class="text">Wszystkie</div>
+                    </div>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+<div class="content">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</div>

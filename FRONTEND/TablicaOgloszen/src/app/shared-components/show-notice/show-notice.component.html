@@ -1,0 +1,46 @@
+ <main>
+    <div class="container" *ngIf="notice; else spinner">
+        <h1>{{notice.title}}</h1>
+       <p class="categories">
+           <span *ngIf="notice.categories; else noCategory">
+                Kategoria: {{getCategoryRightName(notice.categories)}}
+           </span>
+           <ng-template #noCategory>
+               Brak kategorii
+           </ng-template>
+         </p>
+        <div class="imgs" *ngIf="notice.imgs.length>0; else no_imgs">
+            <div class="displayedImg">
+                <img  [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + displayedImg.path)">
+                <div class="arrow arrow_back" [ngClass]="{'not-visible': isFirstImg}" (click)="prevImg()">
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </div>
+                <div class="arrow arrow_forward" [ngClass]="{'not-visible': isLastImg}" (click)="nextImg()">
+                    <mat-icon>arrow_forward_ios</mat-icon>
+                </div>
+            </div>
+            
+            
+            <div class="allImgs" *ngIf="notice.imgs.length>0">
+                <div class="smallImg" *ngFor="let path of notice.imgs; let i = index" (click)=changeDisplayedImg(path,i) [ngClass]="{'displayed': i===displayedImg.index}">
+                    <img [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + path)">
+                </div>
+                
+                
+            </div>
+        </div>
+        <ng-template #no_imgs></ng-template>
+        <div class="text">
+            <h2>Cena: {{notice.price}} zł</h2>
+            
+            <p>{{notice.description}}</p>
+            
+        </div> 
+
+        <p class="date">Data wystawienia: {{notice.date | date}}</p>
+        
+    </div>
+    <ng-template #spinner>
+        <mat-spinner class="spinner" diameter="100"></mat-spinner>
+    </ng-template>
+</main>   

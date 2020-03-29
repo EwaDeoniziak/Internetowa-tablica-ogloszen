@@ -1,0 +1,91 @@
+@import '../../shared/variables.scss';
+.card {
+    :hover{
+        cursor: pointer;
+    }
+    max-width: 90%;
+    margin-bottom: 80px;
+    box-shadow: $outline-shadow;
+    @media (max-width: 600px) {
+        margin-bottom: 40px;
+    }
+    @media (max-width: 850px) {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 40px;
+    }
+    p{
+        height: 70px;
+        padding: 20px;
+    }
+    .card-header{
+        height: 30px;
+        padding-bottom: 10px;
+        mat-card-subtitle{
+            height: 40px;
+        }
+    }
+    
+      .photo-container{
+          margin-top: 10px;
+        height: 200px;
+        text-align: center;
+        border: 1px solid $light_sky;
+        position: relative;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+            position: absolute;  
+            top: 0;  
+            bottom: 0;  
+            left: 0;  
+            right: 0;  
+            margin: auto;
+        }
+        .no-picture{
+            padding-top: 50px;
+            color: $dark_sky;
+        }
+    }
+    .details{
+        padding: 20px;
+        .detail {
+            padding-bottom: 10px;
+            display: flex;
+            .detail-name{
+                text-transform: uppercase;
+                color: $dark_sky;
+                width: 100px;
+            }
+            .detail-value{
+            }
+        }
+    }
+    @media (max-width: 950px) {
+        .mat-card-header .mat-card-title{
+            font-size: 15px;
+        }
+        .mat-card-content{
+            font-size: 12px;
+        }
+        .photo-container{
+            height: 130px;
+            text-align: center;
+            border: 1px solid $light_sky;
+            img{
+                max-height: 130px;
+                width: auto;
+            }
+            .no-picture{
+                padding-top: 25px;
+                color: $dark_sky;
+            }
+        }
+        p {
+            padding: 10px 0 10px 0;
+        }
+        .details{
+            padding: 0;
+        }
+    }
+  }

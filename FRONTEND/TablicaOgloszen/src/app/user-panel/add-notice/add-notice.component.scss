@@ -1,0 +1,82 @@
+@import './../../../app/shared/variables.scss';
+.property{
+    padding: 20px;
+}
+.my-input{
+    width: 100%;
+    font-size: 13px;
+}
+.my-textarea{
+    height: 300px;
+}
+h1{
+    padding: 20px;
+    padding-bottom: 40px;
+    @media (max-width: 440px) {
+        font-size: 25px;
+    }
+}
+.add{
+    text-align: center;
+    margin-top: 40px;
+}
+p{
+    padding: 20px;
+    color: $dark-sky;
+    @media (max-width: 440px) {
+        font-size: 13px;
+    }
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    padding: 20px;
+    li{
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        img{max-width: 200px;
+            height: auto;
+            max-height: 200px;
+            width: auto;
+            
+        }
+        &:first-child{
+            img{
+            border: 7px solid $lemon;
+            }
+        }
+    }
+    
+}button{
+        &.green-button{
+            @media (max-width: 310px) {
+                width: 80vw;
+                margin: 5vw;
+                height: 50px;
+                font-size: 10px;
+                letter-spacing: 0;
+                padding: 0;
+            }
+            
+        }
+    }
+    .categories-to-check{
+        display: flex;
+        flex-wrap: wrap;
+        .category-check{
+            display: block;
+            width: 150px;
+            padding: 20px;
+            font-size: 15px;
+            @media (max-width: 700px) {
+                font-size: 12px;
+            }
+            @media (max-width: 440px) {
+                font-size: 10px;
+                padding: 10px;
+            }
+        }
+    }

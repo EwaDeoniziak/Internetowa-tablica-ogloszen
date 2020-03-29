@@ -1,0 +1,35 @@
+<main>
+    <h1>Moje ogłoszenia</h1>
+    <h4>Aktualne ogłoszenia</h4>
+    <span *ngIf="spinnerActive">
+        <mat-spinner class="spinner" diameter="100"></mat-spinner>
+    </span>
+    <div *ngIf="user">
+        <div *ngIf="notices.length>0; else no_notices" class="notices">
+            <div class="one-notice" *ngFor="let item of notices">
+                
+                    <button mat-button class="delete" (click)="openDialog(item)">Usuń</button>
+                    <button mat-button class="edit" (click)="editNotice(item)">Edytuj</button>
+                    <app-notice-card [item]="item" (click)="showNotice(item)" ></app-notice-card>
+                
+            </div>    
+        </div>
+        <ng-template #no_notices>
+            <p>Brak dodanych ogłoszeń</p>
+        </ng-template>
+    </div> 
+    
+    <div *ngIf="oldNotices && oldNotices.length>0">
+        <h4>Wygaśnięte ogłoszenia</h4>
+            <div *ngIf="oldNotices" class="notices">
+                <div class="one-notice" *ngFor="let item of oldNotices">
+                        
+                        <!-- <button mat-button class="delete" (click)="openDialog(item)">Usuń</button>
+                        <button mat-button class="edit" (click)="editNotice(item)">Edytuj</button> -->
+                        <button mat-button class="actualise" (click)="openActualiseDialog(item)">Przedłuż ważność</button>
+                        <app-notice-card [item]="item" (click)="showNotice(item)" ></app-notice-card>
+                    
+                </div>    
+            </div>   
+    </div>
+</main>

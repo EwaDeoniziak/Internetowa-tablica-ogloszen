@@ -1,0 +1,67 @@
+ <main>
+    <div class="side left">
+        <h4>Zarejestruj</h4>
+        <form (ngSubmit)="registerUser($event)" [formGroup]="registerForm" #f="ngForm">
+            <div class="item">
+                <mat-form-field appearance="outline" class="form-input ">
+                    <mat-label>Imię</mat-label>
+                    <input matInput name="firstName" formControlName="firstName" required minlength="3">
+                    <mat-hint>Minimum 3 znaki</mat-hint>
+                </mat-form-field >
+            </div>
+            <div class="item">
+                <mat-form-field appearance="outline" class="form-input">
+                    <mat-label>Nazwisko</mat-label>
+                    <input matInput name="lastName" formControlName="lastName" required minlength="3">
+                    <mat-hint>Minimum 3 znaki</mat-hint>
+                </mat-form-field >
+            </div>
+            <div class="item">
+                <mat-form-field appearance="outline" class="form-input ">
+                    <mat-label>Numer telefonu</mat-label>
+                    <input matInput name="phone" formControlName="phoneNumber" required length="9">
+                    <mat-error *ngIf="registerForm.get('phoneNumber').invalid">{{getPhoneErrorMessage()}}</mat-error>
+                </mat-form-field >
+            </div>
+            <div class="item">
+                <mat-form-field appearance="outline" class="form-input ">
+                    <mat-label>Adres e-mail</mat-label>
+                    <input matInput name="email" formControlName="registerLogin" required minlength="6">
+                    <mat-error *ngIf="registerForm.get('registerLogin').invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field >
+            </div>
+            <div class="item">
+                <mat-form-field appearance="outline" class="form-input ">
+                    <mat-label>Hasło</mat-label>
+                    <input matInput name="password" formControlName="registerPassword" required minlength="5">
+                    <mat-hint>Minimum 6 znaków</mat-hint>
+                </mat-form-field >
+            </div>
+            <div class="spinner" *ngIf="registerSpinnerActive">
+                <mat-spinner diameter="40"></mat-spinner>
+            </div>
+            <p *ngIf="invalidRegister">Wprowadzony login lub hasło już istnieją</p>
+            <button mat-button class="green-button" type="submit">Zarejestruj</button>
+        </form>
+    </div>
+    <div class="side right">
+        <h4>Zaloguj</h4>
+        <div class="item">
+            <mat-form-field appearance="outline" class="form-input ">
+                <mat-label>Adres e-mail</mat-label>
+                <input matInput name="email1" required [(ngModel)]="login">
+            </mat-form-field >
+        </div>
+        <div class="item">
+            <mat-form-field appearance="outline" class="form-input ">
+                <mat-label>Hasło</mat-label>
+                <input matInput name="password1" required [(ngModel)]="password">
+            </mat-form-field >
+        </div>
+        <div class="spinner" *ngIf="loginSpinnerActive">
+            <mat-spinner diameter="40"></mat-spinner>
+        </div>
+        <p *ngIf="invalidLogin">Wprowadzony login i hasło są niepoprawne</p>
+        <button mat-button class="green-button" (click)="loginUser()">Zaloguj</button>
+    </div>
+</main>

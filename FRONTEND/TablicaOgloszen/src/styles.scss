@@ -1,0 +1,386 @@
+// /* You can add global styles to this file, and also import other style files */
+@import './app/shared/variables.scss';
+html, body { height: 100%; 
+margin: 0;
+padding: 0;}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: white;
+}
+.container{
+    width: 700px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 50px;
+    box-shadow: $outline_shadow;
+    padding: 40px;
+     @media (max-width: 800px){
+        width:100%;
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+//navigation
+.navigation{
+    width: 100%;
+    background-color: white;
+    box-shadow: $shadow;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    a {
+        color: $sea;
+        text-decoration: none;
+        padding: 20px;
+        @media (max-width: 730px) {
+            font-size: 12px;
+            height: 24px;
+            padding: 5px;
+        }
+        :hover{
+            cursor: pointer;
+        }
+    }
+    
+}
+.side-nav{
+    width: 300px;
+    background-color: $sea;
+    .side-nav-content{
+        position: fixed;
+        background-color: $sea;
+    }
+    @media (max-width: 480px) {
+        width: 200px;
+    }
+}
+.logo{
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 20px;
+    //margin-left: 10px;
+    @media (max-width: 950px) {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+}
+.login{
+    margin-right: 20px;
+    .login-icon{
+        float: left;
+        margin-top: 4px;
+    }
+    .arrow-icon{
+        margin-top: 4px;
+    }
+    .login-text{
+        float: left;
+    }
+    font-size: 15px;
+    @media (max-width: 950px) {
+        font-size: 12px;
+        margin-right: 0;
+    }
+}
+.big-screen {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: 730px) {
+        display: none;
+    }
+}
+.small-screen {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @media (min-width: 731px) {
+        display: none;
+    }
+}
+.button-div{
+    height: 30px;
+    margin-top: 17px;
+    .green-button{
+        @media (max-width: 950px) {
+            font-size: 12px;
+
+        }
+    }
+}
+//categories on sidenav
+.categories-nav{
+    //text-align: center;
+    margin-top: 50px;
+    text-align: left;
+    width: 100%;
+    background-color: $sea;
+    //position: fixed;
+    h3{
+        text-align: left;
+        padding: 30px 20px 20px 20px;
+        margin: 0;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+.mat-drawer-inner-container{
+    z-index: -1;
+}
+.categories{
+    //position: fixed;
+    max-width: 300px;
+    margin-top: 50px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    h3{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    @media (max-width: 600px) {
+        margin-top: 60px;
+    }
+    @media (max-width: 480px) {
+        max-width: 200px;
+        margin-top: 70px;
+    }
+    .mat-button-focus-overlay { 
+        background-color: transparent!important; 
+        }
+    .category{
+        width: 120px;
+        text-align: center;
+        padding: 10px;
+        line-height: 14px;
+        .text{
+            font-size: 10px;
+        }
+        @media (max-width: 480px) {
+            width: 70px;
+            .text{
+                font-size: 8px;
+            }
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+
+main{
+    margin-top: 100px;
+    @media (max-width: 661px) {
+        margin-top: 80px;
+    }
+}
+
+ul{
+    list-style: none;
+    &.cards{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        justify-content: space-around;
+        li{
+            box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.342);
+            width: 25%;
+            padding: 2%;
+            margin: 2%;
+            background-color: white;
+            height: 200px;
+        }
+    }
+}
+.icon{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.account-menu{
+    .mat-menu-item{
+        @media (max-width: 661px) {
+            font-size: 12px;
+        }
+    }
+}
+
+
+h1{
+    color: $dark_sky;
+    letter-spacing: 1px;
+    font-size: 40px;
+    @media (max-width: 400px) {
+        font-size: 15px;
+    }
+}
+h2{
+    color: $sea;
+    letter-spacing: 2px;
+    font-size: 35px;
+    @media (max-width: 480px) {
+        font-size: 18px;
+    }
+}
+h3{
+    .material-icons{
+        font-size: 15px;
+        height: 18px;
+        width: 18px;
+    }
+    color: white;
+    padding: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-align: center;
+    @media (max-width: 600px) {
+        font-size: 15px;
+        padding: 20px;
+    }
+    @media (max-width: 480px) {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+h4{
+    font-size: 30px;
+    color: darken($lemon, 10%);
+    font-weight: 600;
+    text-align: center;
+    @media (max-width: 600px) {
+        font-size: 15px;
+    }
+}
+h5{
+    font-size: 15px;
+    color: $sea;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    @media (max-width: 500px) {
+        font-size: 12px;
+    }
+}
+
+.notices{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 3%;
+    .one-notice{
+        width: 30%;
+        @media (max-width: 840px) {
+            width: 45%;
+        }
+        @media (max-width: 600px) {
+            width: 90%;
+          }
+    }
+    @media (max-width: 600px) {
+      margin-top: 6%;
+    }
+    @media (max-width: 840px) {
+        justify-content: space-around;
+    }
+}
+
+.green-button{
+    background-color: darken($lemon, 10%);
+    color:white;
+    text-transform: uppercase;
+    padding:20px;
+    letter-spacing: 2px;
+}
+.outline-sky-button{
+    background-color: white;
+    border-radius: 5px;
+    border: 3px solid $dark_sky;
+    color: $dark_sky;
+    font-size: 15px;
+    padding: 20px;
+    outline: none;
+    
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    @media (max-width: 500px) {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+p{
+    &.date{
+        font-style: italic;
+        font-size: 11px;
+        color: $dark_sky;
+    }
+}
+.spinner{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+//inputs
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick
+{
+    color: $dark_sky !important;
+     
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: $dark_sky !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white !important; 
+    border-radius: 5px;
+}
+//radio button
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: $lemon;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: $lemon;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background-color: $lemon;
+}
+
+//spinner
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: darken($lemon, 10%);
+}
+
+//pagination
+.mat-paginator-page-size .ng-star-inserted{
+    display: none;
+}
+.mat-paginator-page-size-label{
+    display: none;
+}
+
+.mat-drawer-container{
+    background-color: white;
+}
+// .mat-drawer-content .mat-sidenav-content{
+//     height: 100%;
+// }
+// .content{
+//     height: 100%;
+// }
+// .mat-sidenav-container{
+//     height: 100%;
+// }

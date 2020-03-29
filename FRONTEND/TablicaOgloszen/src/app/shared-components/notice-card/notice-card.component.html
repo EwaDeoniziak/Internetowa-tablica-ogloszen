@@ -1,0 +1,37 @@
+<mat-card class="card">
+    <mat-card-header class="card-header">
+        <mat-card-title>{{item.title}}</mat-card-title>
+        <mat-card-subtitle class="category">
+            <span *ngIf="item.categories; else noCategory">
+                {{getCategoryRightName(item.categories)}}
+            </span>
+            <ng-template #noCategory>
+                Brak kategorii
+            </ng-template>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <div class="photo-container">
+        <img *ngIf="item.imgs.length>0; else no_picture" [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + item.imgs[0])" alt="Błąd w pliku">
+    </div>
+    <ng-template #no_picture>
+        <div class="no-picture">
+            <mat-icon>photo</mat-icon>
+            <div class="no-picture-text">Brak zdjęcia</div>
+        </div>    
+    </ng-template>
+    <mat-card-content>
+        <p>
+            {{getShortDescription(item.description)}}
+        </p>
+        <div class="details">
+            <div class="detail">
+                <div class="detail-name">Lokalizacja: </div>
+                <div class="detail-value">{{item.location}}</div>
+            </div>
+            <div class="detail">
+                <div class="detail-name">Cena: </div>
+                <div class="detail-value">{{item.price}} zł</div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>     
