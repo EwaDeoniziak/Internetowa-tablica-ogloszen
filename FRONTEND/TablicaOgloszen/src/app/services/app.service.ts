@@ -76,7 +76,7 @@ export class AppService {
     }
   }
   getActNotice(notice: Notice){
-    if(!!notice.expDate || Date.now()<Date.parse(notice.expDate)){
+    if(Date.now()<Date.parse(notice.expDate)){
       return true;
     } else {
       return false;

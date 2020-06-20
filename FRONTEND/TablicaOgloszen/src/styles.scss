@@ -334,6 +334,9 @@ p{
     margin-right: auto;
 }
 
+.hidden{
+    display: none;
+}
 
 //inputs
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick
@@ -375,12 +378,3 @@ p{
 .mat-drawer-container{
     background-color: white;
 }
-// .mat-drawer-content .mat-sidenav-content{
-//     height: 100%;
-// }
-// .content{
-//     height: 100%;
-// }
-// .mat-sidenav-container{
-//     height: 100%;
-// }

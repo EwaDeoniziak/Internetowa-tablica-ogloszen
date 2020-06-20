@@ -3,7 +3,7 @@
         <h1>{{notice.title}}</h1>
        <p class="categories">
            <span *ngIf="notice.categories; else noCategory">
-                Kategoria: {{getCategoryRightName(notice.categories)}}
+                <div>Kategoria: {{getCategoryRightName(notice.categories)}}</div>
            </span>
            <ng-template #noCategory>
                Brak kategorii
@@ -31,10 +31,33 @@
         </div>
         <ng-template #no_imgs></ng-template>
         <div class="text">
-            <h2>Cena: {{notice.price}} zł</h2>
+            <h2 class="price">Cena: {{notice.price}} zł</h2>
             
             <p>{{notice.description}}</p>
-            
+
+            <h2 class="contact">
+                
+                Kontakt</h2>
+            <p class="space">
+                <span class="important">
+                    <mat-icon>mail</mat-icon>
+                    Adres e-mail: 
+                </span> 
+                {{notice.userId.login}}
+            </p>
+            <p class="space">
+                
+                <span class="important">
+                    <mat-icon>local_phone</mat-icon>
+                    Numer telefonu: </span> 
+                {{notice.userId.phoneNumber}}
+            </p>
+            <h2 class="contact">
+                
+                Lokalizacja: 
+                <span class="location">{{notice.location}}</span>
+                
+            </h2>
         </div> 
 
         <p class="date">Data wystawienia: {{notice.date | date}}</p>

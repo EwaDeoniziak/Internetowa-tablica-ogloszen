@@ -33,14 +33,17 @@
             <div class="item">
                 <mat-form-field appearance="outline" class="form-input ">
                     <mat-label>Hasło</mat-label>
-                    <input matInput name="password" formControlName="registerPassword" required minlength="5">
+                    <input matInput  [type]="hide ? 'password' : 'text'" name="password" formControlName="registerPassword" required minlength="5">
+                    <button type="button" mat-icon-button (click)="hide = !hide" matSuffix [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility_n'}}</mat-icon>
+                        </button>
                     <mat-hint>Minimum 6 znaków</mat-hint>
                 </mat-form-field >
             </div>
             <div class="spinner" *ngIf="registerSpinnerActive">
                 <mat-spinner diameter="40"></mat-spinner>
             </div>
-            <p *ngIf="invalidRegister">Wprowadzony login lub hasło już istnieją</p>
+            <p [ngClass]="{hidden: !invalidRegister}">Wprowadzony login lub hasło już istnieją</p>
             <button mat-button class="green-button" type="submit">Zarejestruj</button>
         </form>
     </div>
@@ -55,7 +58,10 @@
         <div class="item">
             <mat-form-field appearance="outline" class="form-input ">
                 <mat-label>Hasło</mat-label>
-                <input matInput name="password1" required [(ngModel)]="password">
+                <input matInput  [type]="hide2 ? 'password' : 'text'" name="password1" required [(ngModel)]="password">
+                <button mat-icon-button (click)="hide2 = !hide2" matSuffix [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility_n'}}</mat-icon>
+                    </button>
             </mat-form-field >
         </div>
         <div class="spinner" *ngIf="loginSpinnerActive">

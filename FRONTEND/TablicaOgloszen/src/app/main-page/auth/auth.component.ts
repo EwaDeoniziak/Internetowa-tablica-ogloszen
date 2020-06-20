@@ -12,6 +12,10 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AuthComponent implements OnInit {
 
+  //hide passwords in forms 
+  hide = true;
+  hide2 = true;
+
   invalidLogin = false;
   invalidRegister = false;
   registerSpinnerActive = false;
@@ -76,6 +80,10 @@ export class AuthComponent implements OnInit {
         this.registerSpinnerActive = false;
         console.log(er);
         this.invalidRegister = true;
+        setTimeout(function () {
+          this.invalidRegister = false;
+          console.log(this.invalidRegister);
+        }.bind(this), 10000)
         this.message = 'Coś poszło nie tak';
         this.openSnackBar();
       }, () => {

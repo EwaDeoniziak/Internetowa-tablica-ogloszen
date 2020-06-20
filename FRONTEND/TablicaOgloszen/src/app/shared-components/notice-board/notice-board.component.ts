@@ -181,7 +181,7 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
     this.updateItems();
   }
   filterItemsBySearchLocation(array: Notice[]){
-    this.filteredItems = this.search.transform(array, this.location);
+    this.filteredItems = this.searchLocation.transform(array, this.location);
     this.updateItems();
   }
   filterItemsByCategory(array: Notice[]){

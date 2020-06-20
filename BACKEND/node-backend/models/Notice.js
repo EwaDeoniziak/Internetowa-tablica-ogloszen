@@ -3,42 +3,32 @@ const mongoose = require('mongoose');
 const NoticeSchema = mongoose.Schema({
     title: {
         type: String,
-        required: true,
-    },
+        required: true, },
     categories: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
-    },
+        ref: 'Category' },
     description: {
         type: String,
-        required: true,
-    },
+        required: true, },
     price: {
         type: Number,
-        default: 0,
-    },
+        default: 0, },
     imgs: [{
         type: String,
-        default: []
-
-    }],
+        default: [] }],
     date: {
         type: Date,
-        default: Date.now,
-    },
+        default: Date.now, },
     expDate:{
-        type: Date
-    },
+        type: Date },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
+        ref: 'User' },
     type: {
-        type: Number
-    },
+        type: Number },
     location: {
-        type: String,
-    }
+        type: String, }
 });
 
 module.exports = mongoose.model('Notice', NoticeSchema);
+

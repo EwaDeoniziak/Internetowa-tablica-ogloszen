@@ -47,7 +47,7 @@ router.get('', async (req,res) => {
 
 router.get('/:id', async (req,res) => {
     try {
-        const notice = await Notice.findById(req.params.id).populate('categories');
+        const notice = await Notice.findById(req.params.id).populate('categories').populate('userId');
         res.json(notice);
     } catch(err) {
         res.json({message: err});
@@ -83,9 +83,17 @@ router.post('', upload.array('imgs'), verify, (req,res) => {
     // console.log(req.body.title)
     notice.save()
     .then(new_notice => {
-        User.findOneAndUpdate({_id: notice.userId}, {$push: {notices: new_notice._id}}, {new: true});
+        console.log(new_notice);
+        User.findOneAndUpdate({_id: notice.userId}, {$push: {notices: new_notice._id}}, {new: true} ,function(err, doc){
+            if(err){
+                console.log("Something wrong when updating data!");
+            }
+        
+            console.log(doc);
+        })
     })
     .then(user => {
+        
         res.json(user)
     })
     .catch(err => {

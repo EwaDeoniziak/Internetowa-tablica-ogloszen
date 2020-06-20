@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 
 //REGISTER
 
+var private_key = 'ssssscfvdxbfdbf';
+
 router.post('/register', async (req,res) => {
 
     //validation before creating a user
@@ -53,7 +55,7 @@ router.post('/login', async (req,res) => {
     if(!validPass) return res.status(400).send('Invalid password');
 
     //create and assign a token 
-    const token = jwt.sign({_id: user._id}, 'ssssscfvdxbfdbf');
+    const token = jwt.sign({_id: user._id}, private_key);
     res.header('token', token).send(token);
 
 })
