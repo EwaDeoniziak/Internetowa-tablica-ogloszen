@@ -14,7 +14,10 @@ import { MatSnackBar } from '@angular/material';
 export class AddNoticeComponent implements OnInit {
   constructor(private httpService: HttpService, private appService: AppService,
     private _snackbar: MatSnackBar) {
-    this.httpService.getCategories().subscribe(res => { this.categories = res; console.log(this.categories) });
+    this.httpService.getCategories().subscribe(res => { 
+      this.categories = res;
+      // console.log(this.categories);
+    });
   }
 
   imgUrl: any;
@@ -58,7 +61,7 @@ export class AddNoticeComponent implements OnInit {
       let type = this.addNoticeForm.get('type').value;
       type = parseInt(type, 10);
       const categories = this.addNoticeForm.get('categories').value;
-      console.log(type)
+      // console.log(type)
       if (imgs.length > 0) {
         imgs.forEach(element => {
           formData.append('imgs', element, element.name);
@@ -71,15 +74,15 @@ export class AddNoticeComponent implements OnInit {
       formData.append('type', type);
       formData.append('categories', categories._id);
 
-      console.log(this.addNoticeForm);
-      console.log(formData);
-      console.log(categories);
+      // console.log(this.addNoticeForm);
+      // console.log(formData);
+      // console.log(categories);
 
       imgs.forEach(element => {
-        console.log('Zdjecie z formGroup' + element.name);
+        // console.log('Zdjecie z formGroup' + element.name);
       });
       this.httpService.addNotice(formData).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.addSpinnerActive = false;
         this.message = 'Twoje ogłoszenie zostało dodane!';
         this.openSnackBar();
@@ -90,42 +93,10 @@ export class AddNoticeComponent implements OnInit {
     }
   }
 
-  //addNotice() {  
-  // const fileUpload = this.fileUpload.nativeElement;
-  // fileUpload.onchange = () => {  
-  // for (let index = 0; index < fileUpload.files.length; index++)  
-  // {  
-  //   const file = fileUpload.files[index];
-  //   this.files.push({ data: file, inProgress: false, progress: 0});
-  //   this.formData.append('imgs', file.data);
-  //   console.log(file);
-  //   console.log(file.data)
-  // }
-  // }; 
-  // const formData = new FormData();
-  // this.files.forEach(element => {
-  //   formData.append('imgs', element, element.name);
-  // });
-  // formData.append('title', this.title);
-  // formData.append('description', this.description);
-  // formData.append('price', this.price);
-  // console.log(formData);
-  // console.log(this.files);
-  // this.httpService.addNotice(formData).subscribe(res => console.log(res));
-  //}
-
-  // onFileSelected(event) {
-  //   for(let index = 0; index < event.target.files.length; index++){
-  //     this.files.push(event.target.files[index]);
-  //     console.log(event.target.files[index])
-  //   }
-  //   console.log(this.files);
-  // }
-
   async onFilesSelected(event) {
     if (event.target.files.length + this.files.length < 7) {
       for (let index = 0; index < event.target.files.length; index++) {
-        console.log(event);
+        // console.log(event);
         this.files.push(event.target.files[index]);
 
         let count = this.files.length - 1;
@@ -135,21 +106,11 @@ export class AddNoticeComponent implements OnInit {
 
         try {
           const fileContents = await this.readFile(this.files[count]);
-          console.log(fileContents);
+          // console.log(fileContents);
           this.imgURL.push(fileContents);
         } catch (e) {
-          console.warn(e.message)
+          // console.warn(e.message)
         }
-
-        //   //to jest ok
-        //   reader.readAsDataURL(this.files[count]); 
-        //   reader.onload = (_event: any) => { 
-        //     console.log(_event);
-        //     this.imgURL.push(_event.target.result);
-        //     console.log(reader.readyState)
-        //     //console.log('Zdjęcia wyświetlane po kolei: ' + this.imgURL[count]);
-        // }    
-        // //dotąd
 
 
       }
@@ -178,25 +139,25 @@ export class AddNoticeComponent implements OnInit {
 
   onFileSelected(event) {
     if (this.files.length < 7) {
-      console.log(event.target.files[0])
+      // console.log(event.target.files[0])
       this.files.push(event.target.files[0]);
       let count = this.files.length - 1;
-      console.log(count);
-      console.log(this.files[count]);
-      console.log(event.target.files[0]);
+      // console.log(count);
+      // console.log(this.files[count]);
+      // console.log(event.target.files[0]);
       var reader = new FileReader();
       reader.readAsDataURL(this.files[count]);
       reader.onload = (_event: any) => {
-        console.log(_event);
+        // console.log(_event);
         this.imgURL.push(_event.target.result);
-        console.log(this.imgURL[count]);
+        // console.log(this.imgURL[count]);
       }
     }
 
-    console.log(this.imgURL);
-    console.log(this.files);
+    // console.log(this.imgURL);
+    // console.log(this.files);
     this.addNoticeForm.patchValue({ imgs: this.files });
-    console.log(this.addNoticeForm.get('imgs').value);
+    // console.log(this.addNoticeForm.get('imgs').value);
   }
 
 
@@ -204,16 +165,6 @@ export class AddNoticeComponent implements OnInit {
   getCategoryRightName(category: Category): string {
     return this.appService.getCategoryRightName(category);
   }
-
-  //   onSelection(event, value) {
-  //       this.checkedCategories = [];
-  //       this.selectedOptions = value;
-  //       for (let i = 0; i < this.selectedOptions.length; i++) {
-  //         this.checkedCategories.push(this.selectedOptions[i].value);
-  //       }
-  //       console.log(this.checkedCategories);
-
-  // }
 
 
   ngOnInit() {

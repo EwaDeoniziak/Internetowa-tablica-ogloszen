@@ -140,7 +140,7 @@ router.put('/extendValidity/:id', verify, async (req,res) => {
     try {
         const now = new Date();
         const item = {
-            date: now,
+            date: Date.now(),
             expDate: now.setMonth(now.getMonth() + 1)
         }
         const actualNotice = await Notice.updateOne({_id: req.params.id}, 
@@ -148,6 +148,7 @@ router.put('/extendValidity/:id', verify, async (req,res) => {
             })
         console.log(actualNotice);
         res.json(actualNotice);
+        console.log(item);
     } catch(err) {
         res.json({message: err})
         res.status(404);

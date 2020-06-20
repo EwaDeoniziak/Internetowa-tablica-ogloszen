@@ -11,7 +11,9 @@ export class AppComponent {
   constructor(private httpService: HttpService, 
               @Inject(PLATFORM_ID) private platformId: Object,
               @Inject(APP_ID) private appId: string){
-    this.httpService.getNotices().subscribe(el=> console.log(el));
+    this.httpService.getNotices().subscribe(el=> {
+      // console.log(el);
+    });
   }
   onActivate(event: any) {
     if (isPlatformBrowser(this.platformId)) {

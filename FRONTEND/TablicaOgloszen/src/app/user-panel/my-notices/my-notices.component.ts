@@ -33,13 +33,13 @@ export class MyNoticesComponent implements OnInit {
   getMyInfo() {
     this.spinnerActive = true;
     this.http.getMyInfo().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.user = res;
       this.spinnerActive = false;
       this.notices = this.user.notices.filter(el => this.getActNotice(el));
       this.oldNotices = this.user.notices.filter(el => this.getOldNotice(el));
-      console.log(this.oldNotices);
-      console.log(this.notices);
+      // console.log(this.oldNotices);
+      // console.log(this.notices);
     });
   }
 
@@ -60,7 +60,7 @@ export class MyNoticesComponent implements OnInit {
   }
 
   openDialog(notice: Notice){
-    console.log(notice);
+    // console.log(notice);
     const message = `Czy na pewno chcesz usunąć to ogłosznie?`;
 
     const dialogData = new ConfirmDialogModel("", message);
@@ -73,7 +73,7 @@ export class MyNoticesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       if(dialogResult===true){
         this.http.deleteNotice(notice._id).subscribe(res => {
-          console.log(res);
+          // console.log(res);
           this.message = 'Twoje ogłoszenie zostało usunięte!';
           this.openSnackBar();
         }, err => {
@@ -82,12 +82,11 @@ export class MyNoticesComponent implements OnInit {
         });
         this.notices = this.notices.filter(el=>el._id!==notice._id)
       }
-      
     });
   }
 
   openActualiseDialog(notice: Notice){
-    console.log(notice);
+    // console.log(notice);
     const message = `Czy na pewno chcesz odświeżyć swoje ogłoszenie?`;
 
     const dialogData = new ConfirmDialogModel('Możesz przedłużyć ważność swojego ogłoszenia o jeden miesiąc', message);
@@ -99,10 +98,12 @@ export class MyNoticesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if(dialogResult===true){
-        this.http.extendValidity(notice._id).subscribe(res => console.log(res));
-        this.oldNotices = this.oldNotices.filter(el=>el._id!==notice._id)
+        this.http.extendValidity(notice._id).subscribe(res => {
+          //console.log(res);
+        });
+        this.oldNotices = this.oldNotices.filter(el=>el._id!==notice._id);
+        this.notices.push(notice);
       }
-      
     });
   }
 

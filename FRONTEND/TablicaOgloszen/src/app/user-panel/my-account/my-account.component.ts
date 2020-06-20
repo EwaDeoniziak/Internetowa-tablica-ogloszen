@@ -12,7 +12,10 @@ export class MyAccountComponent implements OnInit {
   user: User;
 
   constructor(private router: Router, private http: HttpService) {
-    this.http.getMyInfo().subscribe(res => {this.user = res; console.log(res)});
+    this.http.getMyInfo().subscribe(res => {
+      this.user = res; 
+      // console.log(res);
+    });
    }
 
   ngOnInit() {

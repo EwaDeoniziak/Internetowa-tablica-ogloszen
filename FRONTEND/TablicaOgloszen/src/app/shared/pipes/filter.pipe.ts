@@ -14,14 +14,14 @@ export class FilterPipe implements PipeTransform {
     value = value.filter( el => {
       const category: Category = el[propertyName];
       if(category){
-        console.log(category._id === propertyValue._id);
+        //console.log(category._id === propertyValue._id);
         return category._id === propertyValue._id;
       } else {
         return false;
       }
     }
     );
-    console.log(value);
+    //console.log(value);
     return value;
 };
     

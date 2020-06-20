@@ -17,7 +17,7 @@ export class NoticeCardComponent implements OnInit {
   @Input() item: Notice;
 
   ngOnInit() {
-    console.log(this.item);
+    // console.log(this.item);
   }
 
   getShortDescription(descripton: string): string {

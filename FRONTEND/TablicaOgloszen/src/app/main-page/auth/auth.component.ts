@@ -49,8 +49,8 @@ export class AuthComponent implements OnInit {
     };
     this.authHttp.loginUser(user).subscribe(
       res => {
-        console.log('Zalogowany');
-        console.log(res);
+        //console.log('Zalogowany');
+        //console.log(res);
         localStorage.setItem('token', res);
         this.loginSpinnerActive = false;
         this.router.navigate(['../../user-panel']);
@@ -72,17 +72,17 @@ export class AuthComponent implements OnInit {
         lastName: this.registerForm.get('lastName').value
       };
       this.authHttp.registerUser(user).subscribe(res => {
-        console.log(res);
+        //console.log(res);
         this.registerSpinnerActive = false;
         this.message = 'Zostałeś poprawnie zarejestrowany!';
         this.openSnackBar();
       }, er => {
         this.registerSpinnerActive = false;
-        console.log(er);
+        //console.log(er);
         this.invalidRegister = true;
         setTimeout(function () {
           this.invalidRegister = false;
-          console.log(this.invalidRegister);
+          //console.log(this.invalidRegister);
         }.bind(this), 10000)
         this.message = 'Coś poszło nie tak';
         this.openSnackBar();
@@ -90,13 +90,12 @@ export class AuthComponent implements OnInit {
         this.myNgForm.reset();
       });
       event.currentTarget.reset();
-      
     }
   }
 
-  
   message = 'Ok';
   action = '';
+
   openSnackBar() {
     this._snackbar.open(this.message, this.action, {
       duration: 5000,
@@ -115,5 +114,4 @@ export class AuthComponent implements OnInit {
     this.registerForm.get('phoneNumber').hasError('pattern') ? 'Nieprawidłowa ilość cyfr' :
             '';
   }
-
 }

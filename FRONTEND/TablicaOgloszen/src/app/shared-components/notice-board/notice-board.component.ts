@@ -64,7 +64,7 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
     });
     this.appService.category.subscribe(el => {
       this.category = el;
-    console.log(this.category);
+    //console.log(this.category);
     })
 
     this.http.getCategories().subscribe(res => this.categories = res)
@@ -169,12 +169,12 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
   filterItemsByPriceM(array: Notice[]){
     this.filteredItems = this.filter_by_price.transform(array, this.price1, 'more');
     this.updateItems();
-    console.log(this.filter_by_price.transform(this.notices, this.price1, 'more'));
+    //console.log(this.filter_by_price.transform(this.notices, this.price1, 'more'));
   }
   filterItemsByPriceL(array: Notice[]){
     this.filteredItems = this.filter_by_price.transform(array, this.price2, 'less');
     this.updateItems();
-    console.log(this.filter_by_price.transform(this.notices, this.price2, 'less'));
+    //console.log(this.filter_by_price.transform(this.notices, this.price2, 'less'));
   }
   filterItemsBySearch(array: Notice[]){
     this.filteredItems = this.search.transform(array, this.searchInput);
@@ -186,16 +186,15 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
   }
   filterItemsByCategory(array: Notice[]){
     this.filteredItems = this.filter.transform(array, 'categories', this.category);
-    console.log('zmieniona w filtrowaniu ');
-    console.log(this.category);
-    console.log(this.filteredItems = this.filter.transform(array, 'categories', this.category));
+    //console.log(this.category);
+    //console.log(this.filteredItems = this.filter.transform(array, 'categories', this.category));
 
     this.updateItems();
   }
   filterItemsByType(array: Notice[]){
     const type = parseInt(this.type, 10);
     this.filteredItems = this.filterType.transform(array, 'type', type);
-    console.log(this.filteredItems = this.filterType.transform(array, 'type', type));
+    //console.log(this.filteredItems = this.filterType.transform(array, 'type', type));
     this.updateItems();
   }
 
@@ -207,10 +206,10 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
     this.filterItemsByPriceM(this.filteredItems);
     this.filterItemsByCategory(this.filteredItems);
     this.filterItemsByType(this.filteredItems);
-    console.log(this.category);
-    console.log(this.filteredItems);
-    console.log(this.location);
-    console.log(this.type);
+    //console.log(this.category);
+    //console.log(this.filteredItems);
+    //console.log(this.location);
+    //console.log(this.type);
   }
 
 
@@ -224,12 +223,8 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
 
   changeCategory(category: Category){
     this.appService.category.next(category);
-    console.log('klikniete ' + category);
-    console.log(category);
-    console.log('zmieniona kategoria '+this.category);
-    console.log(this.category);
-    
-    
+    //console.log(category);
+    //console.log(this.category);
     this.filterByAll(this.notices);
     this.sidenav.toggle();
   }
