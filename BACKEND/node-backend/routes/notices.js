@@ -105,13 +105,22 @@ router.post('', upload.array('imgs'), verify, (req,res) => {
 //Update notice
 
 router.put('/:id',
- upload.array('imgs'),
+ upload.array('newImgs'),
   verify, async (req,res) => {
     try {
-        console.log(req.files);
-        imgPaths = [];
-        req.files.map( el => imgPaths.push(el.path));
-        console.log(imgPaths);
+        var imgPaths = [];
+        // console.log("tu są moje files" + req.files);
+        // console.log(req.body.imgs);
+        if(req.body.imgs && req.body.imgs[0].length == 1){
+            imgPaths.push(req.body.imgs);
+        } 
+        else if(req.body.imgs && req.body.imgs.length>1){
+            req.body.imgs.map(element => imgPaths.push(element));
+        }
+        if(req.files.length>0){
+            req.files.map( el => imgPaths.push(el.path));
+        }
+        // console.log("Tu jest imgpaths" + imgPaths);
         const item = {
             title: req.body.title,
                     description: req.body.description,
@@ -121,17 +130,17 @@ router.put('/:id',
                     categories: req.body.categories,
                     imgs: imgPaths
         }
+        console.log(item);
         const updatedNotice = await Notice.updateOne({_id: req.params.id}, 
             { $set: item,
             })
-        console.log(updatedNotice);
+        // console.log(updatedNotice);
         res.json(updatedNotice);
     } catch(err) {
         res.json({message: err})
         res.status(404);
-        
+        console.log(err);
     }
-    
 })
 
 //Extend the validity

@@ -1,5 +1,5 @@
 <main>
-    <div class="container">
+    <div class="container" *ngIf="notice">
         <h1>Edytuj ogłoszenie</h1>
         <form (ngSubmit)="addNewNotice($event)" [formGroup]="addNoticeForm" #f="ngForm">
             <div class="property">
@@ -14,7 +14,7 @@
                     <p>Wybierz kategorię</p>
                     <mat-radio-group class="categories-to-check" aria-labelledby="example-radio-group-label"
                        formControlName="categories">
-                        <mat-radio-button class="category-check" *ngFor="let category of categories" [value]="category">
+                        <mat-radio-button class="category-check" *ngFor="let category of categories" [value]="category" [checked] = "category._id == notice.categories._id ? 'checked' : null">
                             {{getCategoryRightName(category)}}
                         </mat-radio-button>
                     </mat-radio-group>
@@ -35,7 +35,7 @@
                     <p>Typ ogłoszenia</p>
                     <mat-radio-group class="categories-to-check" aria-labelledby="example-radio-group-label"
                        formControlName="type">
-                        <mat-radio-button checked class="category-check" [value]="1">
+                        <mat-radio-button class="category-check" [value]="1">
                             Sprzedam
                         </mat-radio-button>
                         <mat-radio-button class="category-check" [value]="2">
@@ -59,34 +59,40 @@
                     <input matInput type="number" name="price" formControlName="price" required>
                 </mat-form-field>
             </div>
+            <!-- <span>
+                <p>Aktualne zdjęcia</p>
+                <ul *ngIf="oldImgsURL.length>0; else no_actual_photos">
+                    <li *ngFor="let img of oldImgsURL; let i = index">
+                        <div class="photo-container">  
+                            <div class="remove-icon" (click)="removeOldPhoto(i)"><mat-icon>cancel</mat-icon></div>
+                            <img [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + img)" height="200" *ngIf="img">
+                        </div>
+                    </li>
+                </ul>
+                <ng-template #no_actual_photos>
+                    <p>Brak wgranych zdjęć</p>
+                </ng-template>
+            </span> -->
             <div class="property">
                 <button type="button" mat-stroked-button class="button" (click)="fileUpload.click()">Dodaj nowe
                     zdjęcia</button>
                 <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple"
                     accept="image/*" (change)="onFilesSelected($event)" />
             </div>
-            <!-- <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" (change)="onFilesSelected($event)"/>
-            </div>  -->
-            <!-- <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload1.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload1 name="fileUpload1" accept="image/*" (change)="onFileSelected($event)"/>
-            </div> 
-            <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload2.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload2 name="fileUpload2" accept="image/*" (change)="onFileSelected($event)"/>
-            </div> 
-            <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload3.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload3 name="fileUpload3" accept="image/*" (change)="onFileSelected($event)"/>
-            </div>  -->
 
             <p>Max 6 zdjęć</p>
-            <ul *ngIf="imgURL.length>0; else no_photos">
-                <li *ngFor="let img of imgURL; let file of addNoticeForm.get('imgs').value">
-                    <div class="name">{{file.name}}</div>
-                    <img [src]="img" height="200" *ngIf="img">
+            <ul *ngIf="imgURL.length>0 || oldImgsURL.length>0; else no_photos">
+                <li *ngFor="let img of oldImgsURL; let i = index">
+                    <div class="photo-container">  
+                        <div class="remove-icon" (click)="removeOldPhoto(i)"><mat-icon>cancel</mat-icon></div>
+                        <img [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + img)" height="200" *ngIf="img">
+                    </div>
+                </li>
+                <li *ngFor="let img of imgURL; let file of addNoticeForm.get('imgs').value; let i = index">
+                    <div class="photo-container">  
+                        <div class="remove-icon" (click)="removeNewPhoto(i)"><mat-icon>cancel</mat-icon></div>
+                        <img [src]="img" height="200" *ngIf="img">
+                    </div>
                 </li>
             </ul>
             <ng-template #no_photos>
@@ -100,14 +106,5 @@
             </div>
         </form>
 
-        <!-- Tytuł: <input [(ngModel)]="title">
-        Opis: <input [(ngModel)]="description">
-        Cena: <input type="number" [(ngModel)]="price">
-        Zdjęcia: -->
-
-
-
-        <!-- <input type="file" #fileUpload1 id="fileUpload1" name="fileUpload1" multiple="multiple" accept="image/*" (change)="onFileSelected($event)"/>
-        <button (click)="addNotice()">Dodaj ogłoszenie</button> -->
     </div>
 </main>

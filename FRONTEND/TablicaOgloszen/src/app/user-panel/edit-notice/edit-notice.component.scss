@@ -43,9 +43,35 @@ ul{
             width: auto;
             
         }
+        .photo-container{
+            margin-top: 10px;
+            height: 200px;
+            text-align: center;
+            border: 1px solid $light_sky;
+            position: relative;
+          img{
+              max-height: 100%;
+              max-width: 100%;
+              position: absolute;  
+              top: 0;  
+              bottom: 0;  
+              left: 0;  
+              right: 0;  
+              margin: auto;
+          }
+          .remove-icon{
+              position: absolute;
+              top: 2px;
+              right: 2px;
+              &:hover{
+                  color: $lemon;
+                  cursor: pointer;
+              }
+          }
+        }
         &:first-child{
-            img{
-            border: 7px solid $lemon;
+            .photo-container{
+            border: 7px solid $light-sky;
             }
         }
     }

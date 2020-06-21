@@ -61,21 +61,10 @@
                             <mat-radio-button value="1">Sprzedam</mat-radio-button>
                             <mat-radio-button value="2">Kupię</mat-radio-button>
                             <mat-radio-button value="3">Zamienię</mat-radio-button>
-                            <mat-radio-button checked value="">Wszystkie</mat-radio-button>
+                            <mat-radio-button  value="" checked>Wszystkie</mat-radio-button>
                         </mat-radio-group>
                     </div>
-                    <!-- <div class="categories" *ngIf="categories">
-                        <h3>Wybierz kategorię</h3>
-                        
-                        <div *ngFor="let item of categories" class="category" (click)="changeCategory(item)">
-                            <div class="icon"><mat-icon>{{getCategoryIcon(item)}}</mat-icon></div>
-                            <div class="text">{{getCategoryRightName(item)}}</div>
-                        </div>
-                        <div class="category" (click)="selectAll()">
-                            <div class="icon"><mat-icon>select_all</mat-icon></div>
-                            <div class="text">Wszystkie</div>
-                        </div>
-                </div> -->
+                    
                     
                 </div>
                 <mat-paginator class="pager" #paginator [pageSize]="pageSize" [showFirstLastButtons]="true" [length]="totalSize"
@@ -95,60 +84,5 @@
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
-    <!-- <div class="button-div">
-        <button class="green-button" mat-button (click)="addNewNotice()">Dodaj ogłoszenie</button>
-    </div>
-    <div class="wrapper">
-        <mat-form-field appearance="outline" class="filter-input search">
-            <mat-label>Znajdź ogłoszenie</mat-label>
-            <input matInput [(ngModel)]="searchInput" (ngModelChange)="filterByAll(notices)">
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field >
-        <mat-form-field appearance="outline" class="filter-input location">
-            <mat-label>Wyszukaj lokalizację</mat-label>
-            <input matInput [(ngModel)]="location">
-            <mat-icon matSuffix>location_on</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="filter-input price-from">
-            <mat-label>Cena od ...</mat-label>
-            <input matInput type="number" [(ngModel)]="price1" (ngModelChange)="filterByAll(notices)">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="filter-input price-to">
-            <mat-label>Cena do ...</mat-label>
-            <input matInput type="number" [(ngModel)]="price2" (ngModelChange)="filterByAll(notices)">
-        </mat-form-field>
-        <div class="options">
-            <span class="options-title">Typ ogłoszenia:</span>    
-            <mat-radio-group aria-label="Select an option" [(ngModel)]="type">
-                <mat-radio-button value="1">Sprzedam</mat-radio-button>
-                <mat-radio-button value="2">Kupię</mat-radio-button>
-                <mat-radio-button value="3">Zamienię</mat-radio-button>
-                <mat-radio-button value="4">Wszystkie</mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <div class="categories" *ngIf="categories">
-            <h3>Wybierz kategorię</h3>
-            
-            <div *ngFor="let item of categories" class="category" (click)="changeCategory(item)">
-                <div class="icon"><mat-icon>{{getCategoryIcon(item)}}</mat-icon></div>
-                <div class="text">{{getCategoryRightName(item)}}</div>
-            </div>
-            <div class="category" (click)="selectAll()">
-                <div class="icon"><mat-icon>select_all</mat-icon></div>
-                <div class="text">Wszystkie</div>
-            </div>
-    </div>
-        
-    </div>
-    <mat-paginator class="pager" #paginator [pageSize]="pageSize" [showFirstLastButtons]="true" [length]="totalSize"
-        [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
-    </mat-paginator>
-    <div class="notices" *ngIf="notices">
-        <div *ngFor="let item of dataSource" (click)="showNotice(item)" class="one-notice">
-            <app-notice-card [item]="item"></app-notice-card>     
-        </div>
-    </div> 
-    <mat-paginator class="pager" #paginator [pageSize]="pageSize" [showFirstLastButtons]="true" [length]="totalSize"
-        [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
-    </mat-paginator> -->
+    
 

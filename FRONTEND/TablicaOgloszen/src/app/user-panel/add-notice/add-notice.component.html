@@ -64,28 +64,14 @@
                 <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple"
                     accept="image/*" (change)="onFilesSelected($event)" />
             </div>
-            <!-- <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" (change)="onFilesSelected($event)"/>
-            </div>  -->
-            <!-- <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload1.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload1 name="fileUpload1" accept="image/*" (change)="onFileSelected($event)"/>
-            </div> 
-            <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload2.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload2 name="fileUpload2" accept="image/*" (change)="onFileSelected($event)"/>
-            </div> 
-            <div class="property">
-                <button type="button" mat-stroked-button class="button" (click)="fileUpload3.click()">Dodaj zdjęcia</button>
-                <input hidden type="file" #fileUpload3 name="fileUpload3" accept="image/*" (change)="onFileSelected($event)"/>
-            </div>  -->
 
             <p>Max 6 zdjęć</p>
             <ul *ngIf="imgURL.length>0; else no_photos">
-                <li *ngFor="let img of imgURL; let file of addNoticeForm.get('imgs').value">
-                    <div class="name">{{file.name}}</div>
-                    <img [src]="img" height="200" *ngIf="img">
+                <li *ngFor="let img of imgURL; let file of addNoticeForm.get('imgs').value; let i = index">
+                    <div class="photo-container">  
+                        <div class="remove-icon" (click)="removePhoto(i)"><mat-icon>cancel</mat-icon></div>
+                        <img [src]="img" height="200" *ngIf="img">
+                    </div>
                 </li>
             </ul>
             <ng-template #no_photos>

@@ -25,7 +25,7 @@ export class NoticeBoardComponent implements OnInit, OnDestroy {
   notices: Notice[];
   category: Category = null;
   categories: Category[];
-  type: string;
+  type = '';
   spinnerActive = false;
 
   // pager

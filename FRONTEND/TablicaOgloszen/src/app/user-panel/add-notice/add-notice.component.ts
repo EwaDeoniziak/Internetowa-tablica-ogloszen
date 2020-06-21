@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
 export class AddNoticeComponent implements OnInit {
   constructor(private httpService: HttpService, private appService: AppService,
     private _snackbar: MatSnackBar) {
-    this.httpService.getCategories().subscribe(res => { 
+    this.httpService.getCategories().subscribe(res => {
       this.categories = res;
       // console.log(this.categories);
     });
@@ -109,7 +109,7 @@ export class AddNoticeComponent implements OnInit {
           // console.log(fileContents);
           this.imgURL.push(fileContents);
         } catch (e) {
-          // console.warn(e.message)
+          console.warn(e.message);
         }
 
 
@@ -118,7 +118,7 @@ export class AddNoticeComponent implements OnInit {
     // console.log('Zdjęcia wyświetlane po kolei: ' + this.imgURL);
     // console.log(this.files);
     this.addNoticeForm.patchValue({ imgs: this.files });
-    //console.log('Zdjęcia wgrane po kolei: ' + this.addNoticeForm.get('imgs').value);
+    // console.log(this.addNoticeForm.get('imgs'));
   }
 
 
@@ -137,27 +137,11 @@ export class AddNoticeComponent implements OnInit {
     });
   }
 
-  onFileSelected(event) {
-    if (this.files.length < 7) {
-      // console.log(event.target.files[0])
-      this.files.push(event.target.files[0]);
-      let count = this.files.length - 1;
-      // console.log(count);
-      // console.log(this.files[count]);
-      // console.log(event.target.files[0]);
-      var reader = new FileReader();
-      reader.readAsDataURL(this.files[count]);
-      reader.onload = (_event: any) => {
-        // console.log(_event);
-        this.imgURL.push(_event.target.result);
-        // console.log(this.imgURL[count]);
-      }
-    }
 
-    // console.log(this.imgURL);
-    // console.log(this.files);
-    this.addNoticeForm.patchValue({ imgs: this.files });
-    // console.log(this.addNoticeForm.get('imgs').value);
+  removePhoto(i: number) {
+    this.addNoticeForm.get('imgs').value.splice(i, 1);
+    console.log(this.addNoticeForm.get('imgs'));
+    this.imgURL.splice(i, 1);
   }
 
 
