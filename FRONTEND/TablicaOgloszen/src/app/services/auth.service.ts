@@ -11,7 +11,6 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   httpUrl = 'http://localhost:3000/api/';
-
   loginUser(user: LoginUser) {
     return this.http.post(this.httpUrl + 'user/login', user, {responseType: 'text'})
   }

@@ -102,67 +102,6 @@
         margin: 3%;
     }
 
-
-
-  
-
-  
-    // .card {
-    //     :hover{
-    //         cursor: pointer;
-    //     }
-    //     width: 27%;
-    //     margin-bottom: 80px;
-    //     box-shadow: $outline-shadow;
-    //     @media (max-width: 800px) {
-    //         width: 40%;
-    //     }
-    //     @media (max-width: 600px) {
-    //         width: 100%;
-    //         margin-bottom: 40px;
-    //     }
-    //     p{
-    //         height: 70px;
-    //         padding: 20px;
-    //     }
-    //     .card-header{
-    //         height: 50px;
-    //         padding-bottom: 30px;
-    //         .header-image {
-    //             background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    //             background-size: cover;    
-    //         }
-    //     }
-        
-    //       .photo-container{
-    //         height: 200px;
-    //         text-align: center;
-    //         border: 1px solid $light_sky;
-    //         img{
-    //             max-height: 200px;
-    //             width: auto;
-    //         }
-    //         .no-picture{
-    //             padding-top: 50px;
-    //             color: $dark_sky;
-    //         }
-    //     }
-    //     .details{
-    //         padding: 20px;
-    //         .detail {
-    //             padding-bottom: 10px;
-    //             display: flex;
-    //             .detail-name{
-    //                 text-transform: uppercase;
-    //                 color: $dark_sky;
-    //                 width: 100px;
-    //             }
-    //             .detail-value{
-    //             }
-    //         }
-    //     }
-    //   }
-
     .checked{
         background-color: lighten($color: $sea, $amount: 5%);
         border-radius: 10px;

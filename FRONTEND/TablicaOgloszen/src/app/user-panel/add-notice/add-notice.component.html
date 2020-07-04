@@ -10,7 +10,7 @@
                 </mat-form-field>
             </div>
             <div class="property">
-                <span *ngIf="categories; else spinner">
+                <span *ngIf="categories.length>0; else spinner">
                     <p>Wybierz kategorię</p>
                     <mat-radio-group class="categories-to-check" aria-labelledby="example-radio-group-label"
                        formControlName="categories">
@@ -49,7 +49,7 @@
             <div class="property">
                 <mat-form-field class="my-input my-textarea" appearance="outline">
                     <mat-label>Opis ogłoszenia</mat-label>
-                    <textarea matInput class="my-textarea" name="description" formControlName="description"></textarea>
+                    <textarea matInput class="my-textarea" name="description" formControlName="description" required></textarea>
                 </mat-form-field>
             </div>
             <div class="property">
@@ -87,15 +87,5 @@
                 <button mat-button class="green-button" type="submit">Dodaj nowe ogłoszenie</button>
             </div>
         </form>
-
-        <!-- Tytuł: <input [(ngModel)]="title">
-        Opis: <input [(ngModel)]="description">
-        Cena: <input type="number" [(ngModel)]="price">
-        Zdjęcia: -->
-
-
-
-        <!-- <input type="file" #fileUpload1 id="fileUpload1" name="fileUpload1" multiple="multiple" accept="image/*" (change)="onFileSelected($event)"/>
-        <button (click)="addNotice()">Dodaj ogłoszenie</button> -->
     </div>
 </main>

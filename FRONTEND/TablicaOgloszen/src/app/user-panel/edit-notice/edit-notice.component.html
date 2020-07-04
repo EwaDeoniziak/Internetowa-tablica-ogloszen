@@ -1,5 +1,5 @@
 <main>
-    <div class="container" *ngIf="notice">
+    <div class="container" *ngIf="notice; else spinner">
         <h1>Edytuj ogłoszenie</h1>
         <form (ngSubmit)="addNewNotice($event)" [formGroup]="addNoticeForm" #f="ngForm">
             <div class="property">
@@ -65,7 +65,7 @@
                     <li *ngFor="let img of oldImgsURL; let i = index">
                         <div class="photo-container">  
                             <div class="remove-icon" (click)="removeOldPhoto(i)"><mat-icon>cancel</mat-icon></div>
-                            <img [src]="_DomSanitizer.bypassSecurityTrustUrl('http://localhost:3000/' + img)" height="200" *ngIf="img">
+                            <img [src]="_DomSanitizer.bypassSecurityTrustUrl('https://dry-fjord-48898.herokuapp.com/' + img)" height="200" *ngIf="img">
                         </div>
                     </li>
                 </ul>
@@ -107,4 +107,7 @@
         </form>
 
     </div>
+    <ng-template #spinner>
+        <mat-spinner class="spinner" diameter="100"></mat-spinner>
+    </ng-template>
 </main>

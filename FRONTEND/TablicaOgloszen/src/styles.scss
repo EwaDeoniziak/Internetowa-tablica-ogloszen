@@ -277,6 +277,11 @@ h5{
 }
 
 .notices{
+    @media (min-width: 1300px) {
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

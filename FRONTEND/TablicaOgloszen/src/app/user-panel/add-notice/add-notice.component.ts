@@ -24,11 +24,14 @@ export class AddNoticeComponent implements OnInit {
   imagePath: any;
   imgURL: any[] = [];
 
+  @ViewChild('f', {static: true}) myNgForm;
   @ViewChild("fileUpload", { static: false }) fileUpload: ElementRef;
   files: File[] = [];
 
   //categories
   categories: Category[] = [];
+
+  //spinners
   addSpinnerActive = false;
 
   // title: string;
@@ -37,7 +40,7 @@ export class AddNoticeComponent implements OnInit {
 
   addNoticeForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.max(25)]),
-    description: new FormControl(''),
+    description: new FormControl('', [Validators.required, Validators.max(500)]),
     price: new FormControl(null, [Validators.required]),
     imgs: new FormControl([]),
     categories: new FormControl(null),
@@ -78,18 +81,20 @@ export class AddNoticeComponent implements OnInit {
       // console.log(formData);
       // console.log(categories);
 
-      imgs.forEach(element => {
-        // console.log('Zdjecie z formGroup' + element.name);
-      });
       this.httpService.addNotice(formData).subscribe(res => {
-        // console.log(res);
-        this.addSpinnerActive = false;
+        //console.log(res);
         this.message = 'Twoje ogłoszenie zostało dodane!';
-        this.openSnackBar();
+        this.addNoticeForm.reset();
+        //this.openSnackBar();
       }, err => {
         this.message = 'Coś poszło nie tak';
         this.openSnackBar();
+      }, () => {
+        this.addSpinnerActive = false;
+        this.openSnackBar();
+        this.addNoticeForm.reset();
       });
+      event.currentTarget.reset();
     }
   }
 
@@ -140,7 +145,7 @@ export class AddNoticeComponent implements OnInit {
 
   removePhoto(i: number) {
     this.addNoticeForm.get('imgs').value.splice(i, 1);
-    console.log(this.addNoticeForm.get('imgs'));
+    //console.log(this.addNoticeForm.get('imgs'));
     this.imgURL.splice(i, 1);
   }
 
